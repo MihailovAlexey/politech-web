@@ -8,7 +8,6 @@ html > *{
     font-family: Arial, Helvetica;
 }
 
-
 .task {
     margin: 40px;
 }
@@ -26,38 +25,37 @@ html > *{
     height: 100%;
     width: 100%;
     margin: auto;
-    background: url('image/ilon1.png');
+    background: url('image/boy1.png');
     background-size: cover;
     transition: 1s;    
     text-align: center; 
 }
 
-.flex-item::before {
-    content: 'Как тебе такое?';
-    opacity: 0;
-    transition-duration: 1s;
+.flex-item:hover::before {    
+    content: 'Это мяч?...';
+    font-size: 2em;   
 }
 
 .flex-item:hover {
     height: 300px;
     margin: auto;
     width: 300px;
-    background: url('image/ilon2.png');
+    background: url('image/boy2.png');
     background-size: cover;
     transition: 1s;
 }
 
-
-.flex-item::before {    
-    content: 'Как тебе такое?';
-    font-size: 2em;
-    
-    opacity: 0;    
+.flex-item:hover::after {
+    content: url('image/boy7.png');;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-size: cover;
+    transition-duration: 2s;
 }
 
-
-.flex-item:hover::before {    
-    content: 'Как тебе такое?';
+.flex-item:active::before {    
+    content: 'Это кирпич!';
     font-size: 2em;
     text-align: center;
     transition: 1s;
@@ -66,15 +64,15 @@ html > *{
 
 .flex-item:active:hover {
     margin: auto;
-    background: url('image/ilon3.png');
+    background: url('image/boy3.png');
     background-size: cover;
-    transform: translate(50px,-50px);
     transition: 1s;
+    
 }
 
-.flex-item:active::before {    
-    content: 'Это еще не тесла :)';
-    font-size: 2em;
-    text-align: center;
-    transition: 1s;   
+.flex-item::after:active:hover {
+    content: url('image/boy7.png');;    
+    margin: auto;
+    background-size: cover;
+    transform: translate(35px, -35px) rotate(360deg);
 }
