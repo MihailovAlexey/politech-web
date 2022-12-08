@@ -1,0 +1,299 @@
+html > *{
+    display: block;
+    margin: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 31px 0;
+}
+
+.nav-title {
+    margin-right: auto;
+    font-size: 1.5rem;
+    margin-left: 100px;
+}
+
+.nav-link {
+    margin-right: auto;
+    font-size: 1.3rem;
+}
+
+.navbar-logo {
+    display: flex;
+    margin-top: -115px;      
+}
+
+.line_1 {
+    position: absolute;
+    margin-top: 24px;
+    margin-left: 10px;
+    width: 68.73px;
+    height: 0px;
+    
+    border: 2px solid #000000;
+    transform: rotate(-8.37deg);
+}
+    
+.line_2 {
+    position: absolute;
+    width: 25px;
+    height: 0px;
+    margin-top: 35px;
+    margin-left: 27px;
+    
+    border: 5px solid #000000;
+    transform: rotate(106.26deg);
+}
+    
+.line_3 {
+    position: absolute;
+    width: 61.55px;
+    height: 0px;
+    margin-top: 52px;
+    margin-left: 35px;
+    
+    border: 1px solid #000000;
+    transform: rotate(46.97deg);
+}
+    
+.line_4 {
+    position: absolute;
+    width: 59.54px;
+    height: 0px;
+    margin-top: 62px;
+    margin-left: 33px;
+    
+    border: 3px solid #000000;
+    transform: rotate(29.15deg);
+}   
+    
+.line_5 {
+    position: absolute;
+    width: 13.04px;
+    height: 0px;
+    margin-top: 50px;
+    margin-left: 59px;
+    
+    border: 1px solid #000000;
+    transform: rotate(-4.4deg);
+}
+    
+.ellipse_9 {
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 40px;
+    height: 49px;
+    margin-top: 50px;
+    margin-left: 15px;
+    
+    
+    border: 3px solid #000000;
+    border-radius: 50%;
+} 
+    
+.ellipse_10 {
+    box-sizing: border-box;
+    
+    position: absolute;
+    width: 10px;
+    height: 17px;
+    margin-top: 70px;
+    margin-left: 83px;
+    
+    
+    border: 2px solid #000000;
+    border-radius: 50%;
+}
+    
+.ellipse_9:hover, .ellipse_10:hover{
+    background: #000000;
+    transform: rotate(-45deg);
+}
+
+header li {
+    list-style: none;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+header a {
+    text-decoration: none;
+    color: #555;
+    transition: all 0.3s ease 0s;
+}
+
+header a:hover {
+    color: #ffa202;
+}
+
+
+
+
+
+
+
+
+.task {
+    margin: 40px;
+}
+
+.flex-container {
+	height: 400px;
+    width: 400px;
+    display: flex; 
+	flex-direction: row;  
+	justify-content: space-between;
+    align-items: center; 
+}
+
+.flex-item {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background: url('image/ilon1.png');
+    background-size: cover;
+    transition: 1s;    
+    text-align: center;
+}
+
+.flex-item::before {
+    content: 'Как тебе такое?';
+    opacity: 0;
+    transition-duration: 1s;
+}
+
+.flex-item:hover {
+    height: 300px;
+    margin: auto;
+    width: 300px;
+    background: url('image/ilon2.png');
+    background-size: cover;
+    transition: 1s;
+}
+
+
+.flex-item::before {    
+    content: 'Как тебе такое?';
+    font-size: 2em;
+    opacity: 0;    
+}
+
+
+.flex-item:hover::before {    
+    content: 'Как тебе такое?';
+    font-size: 2em;
+    text-align: center;
+    transition: 1s;
+    opacity: 1;    
+}
+
+.flex-item:active:hover {
+    margin: auto;
+    background: url('image/ilon3.png');
+    background-size: cover;
+    transform: translate(50px,-50px);
+    transition: 1.5s;
+    filter: sepia(100%);
+}
+
+.flex-item:active::before {    
+    content: 'Это еще не тесла :)';
+    font-size: 2em;
+    text-align: center;
+    transition: 1s;   
+}
+
+
+
+
+
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 30px 20px 30px;
+    color: #2f2f2f;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
+    flex-wrap: wrap;
+  }
+  
+  .footer_logo {
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    text-transform: lowercase;
+    font-size: 1.5rem;
+  }
+  
+  .footer_addr h2 {
+    margin-top: 1.3rem;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  
+  .nav_title {
+    font-weight: 400;
+    font-size: 15px;
+  }
+  
+  .footer_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    
+    background-color: rgb(33, 33, 33, 0.07);
+    border-radius: 100px;
+    color: #2f2f2f;
+    line-height: 0;
+    margin: 0.6em 0;
+    font-size: 1rem;
+    padding: 0 1.3rem;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .footer li {
+    line-height: 2rem;
+  }
+  
+  .footer a {
+    text-decoration: none;
+  }
+  
+  .footer_nav {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  
+  .nav_ul a {
+    color: #999;
+  }
+
+  .nav_ul p {
+    color: #CCC;
+  }
+  
+  .sign {    
+    color: #999;           
+  }
+    
+  .heart {
+    color: #2f2f2f;
+  }
+
+
+
