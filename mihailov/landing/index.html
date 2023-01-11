@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Game_Mihailov</title>
+</head>
+<body>
+    <h2>Игра: "Электрические схемы"</h2>
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Начать игру!</button>
+
+    <div id="id01" class="modal">
+    
+        <form class="modal-content animate" action="../game/index.html" id="auth_form">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Закрыть">×</span>
+                <div id="my_avatar">                    
+                </div>
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Имя пользователя</b></label>
+                <input type="text" placeholder="Ваня_Иванов_2023" name="uname" required>
+                    
+                <button type="submit" >Запомнить меня и начать играть</button>            
+            </div>        
+        </form>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Аватар</th>
+                    <th>Имя пользователя</th>
+                    <th>Результаты (1 уровень)</th>
+                    <th>Результаты (2 уровень)</th>
+                    <th>Результаты (3 уровень)</th>
+                </tr>
+            </thead>
+            <tbody id="result_score">
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
