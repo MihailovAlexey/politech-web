@@ -1,19 +1,17 @@
 //localstorage info
-const userResult = JSON.parse(localStorage.getItem(`${localStorage.length-1}`))
-
+const userResult = JSON.parse(localStorage.getItem(`${localStorage.length}`))
 //global level params
 const imageCounter = 16
-const successImages = 10
 //
 
 //timer
 const FULL_DASH_ARRAY = 283;
 let TIME_LIMIT
-switch(userResult.level1.difficultyLevel){
-  case "1": TIME_LIMIT = 20; break;
-  case "2": TIME_LIMIT = 15; break;
-  case "3": TIME_LIMIT = 10; break;
-  default: TIME_LIMIT = 30;
+switch(userResult.level2?.difficultyLevel){
+  case "Легкий": TIME_LIMIT = 90; break;
+  case "Нормальный": TIME_LIMIT = 70; break;
+  case "Сложный": TIME_LIMIT = 30; break;
+  default: TIME_LIMIT = 100;
 }
 const WARNING_THRESHOLD = TIME_LIMIT*2/3;
 const ALERT_THRESHOLD = TIME_LIMIT/3;
@@ -31,6 +29,7 @@ const COLOR_CODES = {
     threshold: ALERT_THRESHOLD
   }
 };
+
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -43,119 +42,127 @@ let btn = document.getElementById("myBtn");
 let span = document.getElementsByClassName("close")[0];
 //
 
-const sourceOfTrue = [
-    "img_1",
-    "img_4",
-    "img_5",
-    "img_6",
-    "img_7",
-    "img_8",
-    "img_10",
-    "img_11",
-    "img_15",
-    "img_16"
-]
-const sourceOfFalse = [
-    "img_2",
-    "img_3",
-    "img_9",
-    "img_12",
-    "img_13",
-    "img_14"
-]
+
+const startGame = function() {
+    const imgContainer = document.getElementById("startContainer")
+    const reference = document.getElementById("right-card")     
+    let sourcePref
+    switch(Math.floor(Math.random()*4+1)){
+        case 1: sourcePref = './images/blue/'; break;
+        case 2: sourcePref = './images/green/'; break;
+        case 3: sourcePref = './images/red/'; break;
+        case 4: sourcePref = './images/orange/'; break;
+    }
+
+    let refImg = document.createElement('img');                                 
+        refImg.src = `${sourcePref}reference.jpeg`
+        refImg.className=`reference`          
+        refImg.id=`img_reference`
+        reference.appendChild(refImg)
+    for(let i=1; i<=imageCounter; i++){
+        let img = document.createElement('img');                
+        let sourceSuff
+        i>9 ? sourceSuff=`0${i}` : sourceSuff=`00${i}` 
+        img.src = `${sourcePref}image_part_${sourceSuff}.jpg`        
+        img.setAttribute("draggable",true)   
+        img.id=`img${i}`     
+        imgContainer.appendChild(img)        
+    }    
+}
+
+const shakeImage = function() {
+    const imgContainer = document.getElementById("startContainer")
+    const shaker = Array.from(imgContainer.getElementsByTagName("img"))
+    
+    for(let i=0; i<shaker.length; i++){
+        let buffSrc = shaker[i].src
+        let buffId = shaker[i].id
+        let hood = Math.floor(Math.random()*15+1)
+        shaker[i].src=shaker[hood].src
+        shaker[i].id=shaker[hood].id
+        shaker[hood].src = buffSrc
+        shaker[hood].id = buffId
+    }
+}
+
+startGame()
+
+// shakeImage()
 
 const dragstart = function(event) {
-    event.dataTransfer.setData("text", event.target.id);
+    event.dataTransfer.setData("text", event.target.id);  
 };
 
 const dragover = function(event) {
     if(event.target.nodeName.toLowerCase() === "img") {
-    return true;
+        return true;
     }
     event.preventDefault();    
 }
 
 const drop = function(event) {
     event.preventDefault();
-    let imageId = event.dataTransfer.getData("text");
+    let imageId = event.dataTransfer.getData("text");    
     event.target.appendChild(document.getElementById(imageId));
+    
     checkResult(-1)
 };
 
-// const move = function(card) {
-     
-// }  
-const cells = document.getElementsByClassName(card);
-Array.from(cells).forEach((element) => {
-    element.addEventListener('dragover',dragover);
-    element.addEventListener('drop',drop);
-});
+const move = function(card) {
+    const cells = document.getElementsByClassName(card);
+    Array.from(cells).forEach((element) => {
+        element.addEventListener('dragover',dragover);
+        element.addEventListener('drop',drop);
+    });
+}  
+ 
+move("col")
+move("startContainer")
 
-// move("left-card")
-// move("right-card")  
 
 const images = document.getElementsByTagName("img");
 Array.from(images).forEach((element) => {
     element.addEventListener('dragstart',dragstart);
 });
 
-// const checkResult = function(timeLeft) {
-//     const electricsContainer = document.getElementById("left-card");
-//     const anotherContainer = document.getElementById("right-card");
-//     const startContainer = document.getElementById("startContainer");
-//     const anotherContainerResult = Array.from(anotherContainer.querySelectorAll("img"))
-//     const electricsContainerResult = Array.from(electricsContainer.querySelectorAll("img"))
-//     const startContainerResult = Array.from(anotherContainer.querySelectorAll("img"))
-//     // console.log(currentResult)
-//     userResult.level1.score = 0
-//     electricsContainerResult.forEach(item => {
-//         sourceOfTrue.forEach(successItem => {
-//             if(item.id === successItem){
-//                 userResult.level1.score += 100/imageCounter
-//             }
-//         })
-//         sourceOfFalse.forEach(successItem => {
-//             if(item.id === successItem){
-//                 userResult.level1.score -= 100/imageCounter
-//             }
-//         })
-//     })
-//     anotherContainerResult.forEach(item => {
-//         sourceOfTrue.forEach(successItem => {
-//             if(item.id === successItem){
-//                 userResult.level1.score -= 100/imageCounter
-//             }
-//         })
-//         sourceOfFalse.forEach(successItem => {
-//             if(item.id === successItem){
-//                 userResult.level1.score += 100/imageCounter
-//             }
-//         })
-//     })    
-//     localStorage.setItem(localStorage.key(0), JSON.stringify(userResult))
-//     console.log('resultScore', JSON.parse(localStorage.getItem(localStorage.key(0))).level1.score)
-//     const modalTitle = document.getElementById("modal-title");
-//     const modalHeader = document.getElementById("modal-header");    
-//     const modalBody = document.getElementById("modal-body");
-//     const modalButton = document.getElementById("modal-button");
-//     const modalButtonForm = document.getElementById("modal-button-form");
-//     if(userResult.level1.score >= 100 && anotherContainerResult.length == imageCounter-successImages){
-//         modalTitle.innerHTML = 'Позравляем!'
-//         modalBody.innerHTML = 'Вы успешно завершили уровень'
-//         modalButton.innerHTML = 'Перейти на уровень 2'     
-//         modalButtonForm.action='../level2/index.html'   
-//         modal.style.display = "block";
-//     }
-//     else if(timeLeft === 0){
-//         modalTitle.innerHTML = 'Неудача!'
-//         modalHeader.classList.add('unsuccess')
-//         modalBody.innerHTML = 'У Вас не получилось выйграть этот уровень! Попробуйте еще раз, у Вас получится'
-//         modalButton.innerHTML = 'Попробовать снова'     
-//         modalButtonForm.action='../level1/index.html'   
-//         modal.style.display = "block";
-//     }
+const checkResult = function(timeLeft) {
+    userResult.level2.score = 0
+    const puzzle = document.getElementsByClassName("col");        
+    // const puzzleResult = Array.from(puzzle.getElementsByTagName("img"))    
+    for(let i=0; i<puzzle.length; i++){        
+        let colNumber = puzzle[i]?.id?.match(/\d/g)[0]
+        // console.log(`colNumber: ${colNumber}, childrId: ${puzzle[i]?.children[0]?.id}`)
+        if(colNumber == puzzle[i]?.children[0]?.id?.match(/\d/g)[0]){
+            userResult.level2.score += 100/imageCounter            
+        }
+        if(colNumber != puzzle[i]?.children[0]?.id?.match(/\d/g)[0]){
+            userResult.level2.score -= 100/imageCounter            
+        }
+    }
+    localStorage.setItem(localStorage.length, JSON.stringify(userResult))
+    console.log('resultScore', JSON.parse(localStorage.getItem(`${localStorage.length}`)).level2.score)
+    const modalTitle = document.getElementById("modal-title");
+    const modalHeader = document.getElementById("modal-header");    
+    const modalBody = document.getElementById("modal-body");
+    const modalButton = document.getElementById("modal-button");
+    const modalButtonForm = document.getElementById("modal-button-form");
 
-// }
+    if(userResult.level2.score >= 100){
+        modalTitle.innerHTML = 'Позравляем!'
+        modalBody.innerHTML = 'Вы успешно завершили уровень'
+        modalButton.innerHTML = 'Перейти на уровень 3'     
+        modalButtonForm.action='../level3/index.html'   
+        modal.style.display = "block";
+    }
+    else if(timeLeft === 0){
+        modalTitle.innerHTML = 'Неудача!'
+        modalHeader.classList.add('unsuccess')
+        modalBody.innerHTML = 'У Вас не получилось выйграть этот уровень! Попробуйте еще раз, в следующий раз повезет'
+        modalButton.innerHTML = 'Попробовать снова'     
+        modalButtonForm.action='../level2/index.html'   
+        modal.style.display = "block";
+    }
+}
 
 span.onclick = function() {
     modal.style.display = "none";

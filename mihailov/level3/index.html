@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../successModal/style.css">
+    <link rel="stylesheet" href="../timer/style.css">
+    <title>Уровень 3</title>
+    <!-- <link rel="import" id="link" href="../timer/index.html"> -->
+</head>
+<body>
+    <h2>Игра: "Электрические схемы": уровень 3</h2>    
+    <div id="timer"></div>
+
+    <div class="puzzle">
+      <div class = "container">
+        <div class="left">
+            <h2>Пазл</h2>
+            <div class="row">
+              <div class="col" id="col1"></div>
+              <div class="col" id="col2"></div>
+              <div class="col" id="col3"></div>
+              <div class="col" id="col4"></div>
+            </div>
+            <div class="row">
+              <div class="col" id="col5"></div>
+              <div class="col" id="col6"></div>
+              <div class="col" id="col7"></div>
+              <div class="col" id="col8"></div>
+            </div>
+            <div class="row">
+              <div class="col" id="col9"></div>
+              <div class="col" id="col10"></div>
+              <div class="col" id="col11"></div>
+              <div class="col" id="col12"></div>
+            </div>
+            <div class="row">
+              <div class="col" id="col13"></div>
+              <div class="col" id="col14"></div>
+              <div class="col" id="col15"></div>
+              <div class="col" id="col16"></div>
+            </div>
+        </div>            
+        
+        <div class="right">
+            <h2>Итоговый вид</h2>
+            <div class="right-card" id= "right-card">             
+            </div>
+        </div>
+      </div>      
+    </div>
+
+    <h3 id = "task">Соберите электросхему из представленных ниже кусочков (для вращения используйте ПКМ):</h3>    
+      
+    <div class="images" id="startContainer">      
+    </div> 
+    <div id="myModal" class="modal">  
+      <div class="modal-content">
+        <div id="modal-header" class="modal-header">
+          <span class="close">&times;</span>
+          <h2 id="modal-title"></h2>
+        </div>
+        <div class="modal-body">
+          <p id="modal-body"></p>
+          <form id="modal-button-form">
+            <button id="modal-button"></button>          
+           </form>          
+        </div>    
+      </div>
+    </div>  
+</body>
+<script src="script.js"></script>
+</html>

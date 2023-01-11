@@ -3,44 +3,44 @@ let faker = [
     {
         avatar: `https://placekitten.com/201/201`,
         username: "Гаврилов Павел Пётрович",
-        level1: {score: 100,difficultyLevel: 1}, 
-        level2: {score: 100,difficultyLevel: 1},
-        level3: {score: 98,difficultyLevel: 1},
+        level1: {score: 100,difficultyLevel: "Нормальный"}, 
+        level2: {score: 100,difficultyLevel: "Нормальный"},
+        level3: {score: 100,difficultyLevel: "Нормальный"},        
     },
     {
         avatar: `https://placekitten.com/202/202`,
         username: "Панов Арсен Мартынович",
-        level1: {score: 54,difficultyLevel: 1},
-        level2: {score: 58,difficultyLevel: 1},
-        level3: {score: 82,difficultyLevel: 1},
+        level1: {score: 54,difficultyLevel: "Сложный"},
+        level2: {score: 58,difficultyLevel: "Сложный"},    
+        level3: {score: 58,difficultyLevel: "Сложный"},        
     },
     {
         avatar: `https://placekitten.com/203/203`,
         username: "Пестов Орест Антонинович",
-        level1: {score: 17,difficultyLevel: 1},
-        level2: {score: 77,difficultyLevel: 1},
-        level3: {score: 95,difficultyLevel: 1},
+        level1: {score: 17,difficultyLevel: "Легкий"},
+        level2: {score: 77,difficultyLevel: "Легкий"},     
+        level3: {score: 77,difficultyLevel: "Легкий"},        
     },
     {
         avatar: `https://placekitten.com/224/214`,
         username: "Федосеев Евдоким Михаилович",
-        level1: {score: 85,difficultyLevel: 1},
-        level2: {score: 76,difficultyLevel: 1},
-        level3: {score: 48,difficultyLevel: 1},
+        level1: {score: 85,difficultyLevel: "Легкий"},
+        level2: {score: 76,difficultyLevel: "Легкий"},     
+        level3: {score: 76,difficultyLevel: "Легкий"},        
     },
     {
         avatar: `https://placekitten.com/205/205`,
         username: "Субботин Гордей Евсеевич",
-        level1: {score: 22,difficultyLevel: 1},
-        level2: {score: 78,difficultyLevel: 1},
-        level3: {score: 56,difficultyLevel: 1},
+        level1: {score: 22,difficultyLevel: "Сложный"},
+        level2: {score: 78,difficultyLevel: "Сложный"},    
+        level3: {score: 78,difficultyLevel: "Сложный"},        
     },
     {
         avatar: `https://placekitten.com/206/206`,
         username: "Щербаков Степан Христофорович",
-        level1: {score: 95,difficultyLevel: 1},
-        level2: {score: 97,difficultyLevel: 1},
-        level3: {score: 99,difficultyLevel: 1},
+        level1: {score: 95,difficultyLevel: "Нормальный"},
+        level2: {score: 97,difficultyLevel: "Нормальный"}, 
+        level3: {score: 97,difficultyLevel: "Нормальный"},        
     }
 ]
 
@@ -85,12 +85,21 @@ let result_score_generator = () => {
         let level_1_score = tr.appendChild(document.createElement(`td`))
         level_1_score.innerHTML=`${arr[i].level1.score} / 100`
 
+        let level_1_diff = tr.appendChild(document.createElement(`td`))
+        level_1_diff.innerHTML=`${arr[i].level1.difficultyLevel}`
+
         let level_2_score = tr.appendChild(document.createElement(`td`))
         level_2_score.innerHTML=`${arr[i].level2.score} / 100`
+        
+        let level_2_diff = tr.appendChild(document.createElement(`td`))
+        level_2_diff.innerHTML=`${arr[i].level2.difficultyLevel}`
 
         let level_3_score = tr.appendChild(document.createElement(`td`))
         level_3_score.innerHTML=`${arr[i].level3.score} / 100`
         
+        let level_3_diff = tr.appendChild(document.createElement(`td`))
+        level_3_diff.innerHTML=`${arr[i].level3.difficultyLevel}`
+
         table.appendChild(tr)
     }
 }
@@ -148,7 +157,7 @@ const formElement = document.getElementById('auth_form');
                 difficultyLevel: difficulty
             }
         }
-        localStorage.setItem(localStorage.length, JSON.stringify(obj))        
+        localStorage.setItem(localStorage.length+1, JSON.stringify(obj))        
         window.location.href = "../level1/index.html"        
     });
 

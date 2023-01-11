@@ -1,5 +1,5 @@
 //localstorage info
-const userResult = JSON.parse(localStorage.getItem(`${localStorage.length-1}`))
+const userResult = JSON.parse(localStorage.getItem(`${localStorage.length}`))
 console.log(userResult)
 //global level params
 const imageCounter = 16
@@ -9,10 +9,10 @@ const successImages = 10
 //timer
 const FULL_DASH_ARRAY = 283;
 let TIME_LIMIT
-switch(userResult.level1.difficultyLevel){
-  case "1": TIME_LIMIT = 30; break;
-  case "2": TIME_LIMIT = 15; break;
-  case "3": TIME_LIMIT = 10; break;
+switch(userResult.level1?.difficultyLevel){
+  case "Легкий": TIME_LIMIT = 30; break;
+  case "Нормальный": TIME_LIMIT = 15; break;
+  case "Сложный": TIME_LIMIT = 10; break;
   default: TIME_LIMIT = 40;
 }
 const WARNING_THRESHOLD = TIME_LIMIT*2/3;
@@ -165,7 +165,7 @@ const checkResult = function(timeLeft) {
     else if(timeLeft === 0){
         modalTitle.innerHTML = 'Неудача!'
         modalHeader.classList.add('unsuccess')
-        modalBody.innerHTML = 'У Вас не получилось выйграть этот уровень! Попробуйте еще раз, у Вас получится'
+        modalBody.innerHTML = 'У Вас не получилось выйграть этот уровень! Попробуйте еще раз, в следующий раз повезет'
         modalButton.innerHTML = 'Попробовать снова'     
         modalButtonForm.action='../level1/index.html'   
         modal.style.display = "block";
