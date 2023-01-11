@@ -1,3 +1,6 @@
+//localstorage info
+const userResult = JSON.parse(localStorage.getItem(`${localStorage.length-1}`))
+console.log(userResult)
 //global level params
 const imageCounter = 16
 const successImages = 10
@@ -5,8 +8,15 @@ const successImages = 10
 
 //timer
 const FULL_DASH_ARRAY = 283;
-const WARNING_THRESHOLD = 10;
-const ALERT_THRESHOLD = 5;
+let TIME_LIMIT
+switch(userResult.level1.difficultyLevel){
+  case "1": TIME_LIMIT = 30; break;
+  case "2": TIME_LIMIT = 15; break;
+  case "3": TIME_LIMIT = 10; break;
+  default: TIME_LIMIT = 40;
+}
+const WARNING_THRESHOLD = TIME_LIMIT*2/3;
+const ALERT_THRESHOLD = TIME_LIMIT/3;
 
 const COLOR_CODES = {
   info: {
@@ -21,7 +31,6 @@ const COLOR_CODES = {
     threshold: ALERT_THRESHOLD
   }
 };
-const TIME_LIMIT = 20;
 let timePassed = 0;
 let timeLeft = TIME_LIMIT;
 let timerInterval = null;
@@ -56,7 +65,6 @@ const sourceOfFalse = [
 ]
 
 // console.log(JSON.parse(localStorage.getItem('data')))
-const userResult = JSON.parse(localStorage.getItem(localStorage.key(0)))
 // {
 //     user: "Alex",
 //     level1: {

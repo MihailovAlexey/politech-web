@@ -2,8 +2,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    
+    align-items: center;    
 }
 
 
@@ -17,14 +16,16 @@ input[type=text] {
 }
 
 
-button {
-    background-color: #4CAF50;
-    color: white;
+.button {
+    background-color: #B8B3E9;
+    color: black;
+    font-weight: 700;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 100%;
+    font-size: 16px;
 }
 
 button:hover {
@@ -83,6 +84,9 @@ span.psw {
     margin: 5% auto 15% auto;
     border: 1px solid #888;
     width: 50%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }
 
 .close {
@@ -141,6 +145,54 @@ span.psw {
 	border-radius: 0 8px 8px 0;
 }
 
+.form_radio_group {    
+	display: inline-block;
+	overflow: hidden;
+    font-weight: 700;
+}
+.form_radio_group-item {
+	display: inline-block;
+	float: left;    
+}
+.form_radio_group input[type=radio] {
+	display: none;
+}
+.form_radio_group label {
+	display: inline-block;
+	cursor: pointer;
+	padding: 0px 15px;
+	line-height: 34px;
+	border: 1px solid #999;
+	border-right: none;
+	user-select: none;
+}
+ 
+.form_radio_group .form_radio_group-item:first-child label {
+	border-radius: 6px 0 0 6px;
+}
+.form_radio_group .form_radio_group-item:last-child label {
+	border-radius: 0 6px 6px 0;
+	border-right: 1px solid #999;
+}
+ 
+/* Checked */
+.form_radio_group input[type=radio]:checked + label {
+	background: #B8B3E9;
+}
+ 
+/* Hover */
+.form_radio_group label:hover {
+	color: #555;
+}
+ 
+/* Disabled */
+.form_radio_group input[type=radio]:disabled + label {
+	background: #efefef;
+	color: #555;
+}
+
+
+
 @-webkit-keyframes animatezoom {
     from {-webkit-transform: scale(0)} 
     to {-webkit-transform: scale(1)}
@@ -151,7 +203,6 @@ span.psw {
     to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
     span.psw {
        display: block;

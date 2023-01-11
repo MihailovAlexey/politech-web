@@ -1,3 +1,4 @@
+
 let faker = [
     {
         avatar: `https://placekitten.com/201/201`,
@@ -42,6 +43,9 @@ let faker = [
         level3: {score: 99,difficultyLevel: 1},
     }
 ]
+
+
+
 
 let result = []
 for(let i = localStorage.length-1; i>=0; i--){
@@ -101,6 +105,8 @@ window.onclick = function(event) {
     }
 }
 
+
+
 let get_avatar = () => {
     let avatar = document.getElementById(`my_avatar`)
     let id = Math.floor(Math.random() * 2001)
@@ -117,23 +123,42 @@ const formElement = document.getElementById('auth_form');
     formElement.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(formElement);
-        const name = formData.get('uname');         
+        const name = formData.get('uname');
+        const radios = document.getElementsByName('radio');
+        let difficulty = 1    
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {  
+                difficulty = radios[i].value                              
+                break;
+            }
+        }         
         const obj = {
             avatar: document.getElementById(`my_avatar`).getElementsByTagName('img')[0].src,
             username: name,
             level1: {
                 score: 0,        
-                difficultyLevel: 1
+                difficultyLevel: difficulty
             },
             level2: {
                 score: 0,        
-                difficultyLevel: 1
+                difficultyLevel: difficulty
             },
             level3: {
                 score: 0,        
-                difficultyLevel: 1
+                difficultyLevel: difficulty
             }
         }
-        localStorage.setItem(name, JSON.stringify(obj))        
+        localStorage.setItem(localStorage.length, JSON.stringify(obj))        
         window.location.href = "../level1/index.html"        
     });
+
+
+const buttonGroup = document.getElementById("button-group")
+function setDifficultyLevel(event) {
+    const allBtn = buttonGroup.getElementsByTagName("button")
+    Array.from(allBtn).forEach(element => {
+        element.classList.remove("selected");
+    }); 
+    event.target.classList.add("selected")
+
+}
