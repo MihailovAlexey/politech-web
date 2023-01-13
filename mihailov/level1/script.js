@@ -157,7 +157,7 @@ const checkResult = function(timeLeft) {
     const modalButtonForm = document.getElementById("modal-button-form");
     if(userResult.level1.score >= 100 && anotherContainerResult.length == imageCounter-successImages){
         modalTitle.innerHTML = 'Позравляем!'
-        modalBody.innerHTML = 'Вы успешно завершили уровень'
+        modalBody.innerHTML = 'Вы успешно завершили уровень. Теперь вам предстоит собрать электрическую схему из 16 фрагментов'
         modalButton.innerHTML = 'Перейти на уровень 2'     
         modalButtonForm.action='../level2/index.html'   
         modal.style.display = "block";
@@ -275,3 +275,14 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+
+function classToggle() {
+  const navs = document.querySelectorAll('.nav_items')
+  
+  navs.forEach(nav => nav.classList.toggle('nav_toggle-show'));
+}
+
+document.querySelector('.nav_link-toggle')
+  .addEventListener('click', classToggle);

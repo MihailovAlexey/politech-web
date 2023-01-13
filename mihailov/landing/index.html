@@ -4,11 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Электрические схемы</title>
 </head>
-<body>
-    <h2>Игра: "Электрические схемы"</h2>
+<body> 
+    <header class="nav" id="nav">
+        <div class="nav_link nav_link-brand brand">
+          <div class="navbar-logo">
+            <div class="rectangle_9"> </div>
+            <div class="line_1"> </div>
+            <div class="line_2"> </div>                
+            <div class="line_3"> </div>
+            <div class="line_4"> </div>
+            <div class="line_5"> </div>
+            <div class="ellipse_9"> </div>
+            <div class="ellipse_10"> </div>
+          </div>
+          <h1 class="nav-title active">Электрические схемы</h1>
+        </div>    
+       <div class="nav_link nav_link-toggle">
+        <a href="javascript:void(0);" class="icon">
+          <i class="fa fa-bars"></i>
+        </a>
+       </div>
+       <nav class="nav_items nav_items-right">
+        <a href="../index.html" class="nav_link">Портфолио</a>
+        <a href="#nav" class="nav_link">На главную</a>        
+       </nav>
+     </header>      
     <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="button">Начать игру!</button>
 
     <div id="id01" class="modal">

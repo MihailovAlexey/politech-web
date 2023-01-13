@@ -217,3 +217,170 @@ img {
   .reference {
     width: 400px;
   }
+
+  .nav {
+    display: flex;
+    padding: 16px;
+    font-family: sans-serif;
+    color: #555;
+    align-items: center;    
+  }
+  
+  .nav_link {
+    padding-right: 10px;
+  }
+  
+  .nav_items {
+    display: flex;
+  }
+  
+  .nav_items-right {
+    margin-left:auto;
+  }
+  
+  .nav_link-toggle {
+    display: none;
+  }
+  
+  .brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+  }
+  
+  .navbar-logo {
+      /* display: flex; */
+      /* margin-top: -115px;       */
+      position: relative;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+  } 
+  
+  .line_1 {
+      position: absolute;
+      top: 24%;
+      left: 10%;
+      width: 68.73%;
+      height: 0%;
+      
+      border: 1px solid #000000;
+      transform: rotate(-8.37deg);
+  }
+      
+  .line_2 {
+      position: absolute;
+      width: 25%;
+      height: 0%;
+      top: 35%;
+      left: 27%;
+      
+      border: 3px solid #000000;
+      transform: rotate(106.26deg);
+  }
+      
+  .line_3 {
+      position: absolute;
+      width: 61.55%;
+      height: 0%;
+      top: 52%;
+      left: 35%;
+      
+      border: 1px solid #000000;
+      transform: rotate(46.97deg);
+  }
+      
+  .line_4 {
+      position: absolute;
+      width: 59.54%;
+      height: 0%;
+      margin-top: 62%;
+      margin-left: 33%;
+      
+      border: 2px solid #000000;
+      transform: rotate(29.15deg);
+  }   
+      
+  .line_5 {
+      position: absolute;
+      width: 13.04%;
+      height: 0px;
+      top: 50%;
+      left: 59%;
+      
+      border: 1% solid #000000;
+      transform: rotate(-4.4deg);
+  }
+      
+  .ellipse_9 {
+      box-sizing: border-box;
+      
+      position: absolute;
+      width: 40%;
+      height: 49%;
+      top: 50%;
+      left: 15%;
+      
+      
+      border: 2px solid #000000;
+      border-radius: 50%;
+  } 
+      
+  .ellipse_10 {
+      box-sizing: border-box;
+      
+      position: absolute;
+      width: 15%;
+      height: 20%;
+      margin-top: 70%;
+      margin-left: 83%;
+      
+      
+      border: 1px solid #000000;
+      border-radius: 50%;
+  }
+      
+  .ellipse_9:hover, .ellipse_10:hover{
+      background: #000000;
+      transform: rotate(-45deg);
+  }
+  
+  
+  header a {
+      text-decoration: none;
+      color: #555;
+      transition: all 0.3s ease 0s;
+      margin: 7px 10px;
+  }
+  
+  header a:hover {
+      color: #ffa202;
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .nav_items,
+    .nav {
+      flex-direction: column;
+    }
+      
+    .nav_items {
+        display:none;
+      }
+        
+    .nav_items-right {
+        margin-left:0;
+      }
+        
+    .nav_toggle-show {
+        display: flex;
+      }
+        
+    .nav_link-toggle {
+        align-self: flex-end;
+        display: initial;
+        position: absolute;
+        cursor: pointer;
+      }    
+  }

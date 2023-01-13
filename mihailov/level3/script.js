@@ -174,9 +174,9 @@ const checkResult = function(timeLeft) {
     const modalButton = document.getElementById("modal-button");
     const modalButtonForm = document.getElementById("modal-button-form");
 
-    if(userResult.level2.score >= 100){
+    if(userResult.level3.score >= 100){
         modalTitle.innerHTML = 'Позравляем!'
-        modalBody.innerHTML = 'Вы успешно завершили уровень и прошли нашу игру!'
+        modalBody.innerHTML = 'Вы успешно завершили уровень и прошли нашу игру! Спасибо что играли с нами'
         modalButton.innerHTML = 'Перейти на стартовую страницу'     
         modalButtonForm.action='../landing/index.html'   
         modal.style.display = "block";
@@ -322,3 +322,13 @@ function rotate(event) {
 for(let i=1;i<=imageCounter; i++){
   document.getElementById(`img${i}`).onwheel = rotate  
 }
+
+
+function classToggle() {
+  const navs = document.querySelectorAll('.nav_items')
+  
+  navs.forEach(nav => nav.classList.toggle('nav_toggle-show'));
+}
+
+document.querySelector('.nav_link-toggle')
+  .addEventListener('click', classToggle);

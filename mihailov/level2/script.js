@@ -149,7 +149,7 @@ const checkResult = function(timeLeft) {
 
     if(userResult.level2.score >= 100){
         modalTitle.innerHTML = 'Позравляем!'
-        modalBody.innerHTML = 'Вы успешно завершили уровень'
+        modalBody.innerHTML = 'Вы успешно завершили уровень. Задача становится сложнее! Теперь элементы умеют вращаться! Соберите схему из фрагментов. Для вращения используйте колесико мыши'
         modalButton.innerHTML = 'Перейти на уровень 3'     
         modalButtonForm.action='../level3/index.html'   
         modal.style.display = "block";
@@ -266,3 +266,13 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+
+function classToggle() {
+  const navs = document.querySelectorAll('.nav_items')
+  
+  navs.forEach(nav => nav.classList.toggle('nav_toggle-show'));
+}
+
+document.querySelector('.nav_link-toggle')
+  .addEventListener('click', classToggle);
